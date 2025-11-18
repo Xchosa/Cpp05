@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:18:25 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/17 17:35:35 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:16:45 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,16 @@ unsigned int Bureaucrat::getGrade() const noexcept
 {
 	return this->_grade;
 }
+
+void Bureaucrat::incrementBy(unsigned int nbr)
+{
+	int test_grade = this->getGrade();
+	if(test_grade + nbr >150)
+		throw GradeTooLowException(this->getName, test_grade);
+	
+}
+
+
 
 
 // lowest 150

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:07:00 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/17 17:32:33 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:14:08 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ class Bureaucrat
 	std::string getName()  const noexcept;
 	unsigned int getGrade() const noexcept;
 
-	// Parameter Constructor
 	
+	void incrementBy(unsigned int nbr);
+	void decrementBy(unsigned int nbr);
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat& Bureaucrat );
