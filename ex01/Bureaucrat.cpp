@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:18:25 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 11:24:43 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/19 16:12:04 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,19 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat )
 };
 
 
-
+Form::Form(const std::string &name, unsigned int nbrToSign, unsigned int nbrToExe ): _Name(_Name) , isSigned(false), ReGradeToSign(), ReGradeToExec()
+{
+	if (nbrToSign > 150)
+		throw GradeTooLowException(Name, nbrToSign);
+	if (nbrToSign  < 1)
+		throw GradeTooHighException(Name, nbrToSign);
+	if (nbrToExe > 150)
+		throw GradeTooLowException(Name, nbrToExe);
+	if (nbrToExe  < 1)
+		throw GradeTooHighException(Name, nbrToExe);
+	
+	std::cout << "Creating Form: " << std::endl;
+}
 
 
 Form::Form(): _Name("default") , isSigned(false), ReGradeToSign(), ReGradeToExec()

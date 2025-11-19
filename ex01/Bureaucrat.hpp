@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:07:00 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 12:08:45 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/19 16:06:07 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ class Form
 	public:
 	Form();
 	~Form();
+	Form(const std::string &name, unsigned int );
 	Form& operator=(const Form &object);
 	Form(const Form &object);
 	void beSigned(const Bureaucrat &object);
