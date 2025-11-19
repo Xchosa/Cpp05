@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:07:00 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 10:17:11 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/19 12:08:45 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class Form
 {
 	private:
 	std::string _Name;
-	boolean	signed;
+	bool isSigned;
 	unsigned int ReGradeToSign;
 	unsigned int ReGradeToExec;
 
@@ -56,7 +56,13 @@ class Form
 	void beSigned(const Bureaucrat &object);
 	unsigned int getReGradeToSign();
 	unsigned int getReGradeToExec();
-}
+
+	std::string getName();
+	bool getSignature();
+	unsigned int getReGradeToSign();
+	unsigned int getReGradeToExec();
+	void getStatus();
+};
 
 
 
@@ -86,5 +92,8 @@ class GradeTooLowException : public std::exception
 	GradeTooLowException(const std::string& name, unsigned int grade);
 	virtual const char* what() const throw();
 };
+
+
+Form::GradeTooHighException : public std::exception
 
 #endif
