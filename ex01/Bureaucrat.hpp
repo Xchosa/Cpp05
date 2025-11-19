@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:07:00 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 09:41:12 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/19 10:17:11 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,29 @@ class Bureaucrat
 	void decrementBy(int nbr);
 	void getStatus();
 };
+
+class Form
+{
+	private:
+	std::string _Name;
+	boolean	signed;
+	unsigned int ReGradeToSign;
+	unsigned int ReGradeToExec;
+
+	public:
+	Form();
+	~Form();
+	Form& operator=(const Form &object);
+	Form(const Form &object);
+	void beSigned(const Bureaucrat &object);
+	unsigned int getReGradeToSign();
+	unsigned int getReGradeToExec();
+}
+
+
+
+
+
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat& Bureaucrat );
 

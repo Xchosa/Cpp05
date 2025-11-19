@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:18:25 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 09:41:22 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/19 10:18:52 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,3 +120,28 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat )
 	out << Bureaucrat.getName() << ", the bureaucrat's grade is " << Bureaucrat.getGrade() << "." << std::endl;
 	return out;
 };
+
+
+
+
+
+Form::Form(): _Name() , signed(), ReGradeToSign(), ReGradeToExec()
+{
+	
+}
+/*
+
+	~Form();
+	Form& operator=(const Form &object);
+	Form(const Form &object);
+	void beSigned(const Bureaucrat &object);
+	unsigned int getReGradeToSign();
+	unsigned int getReGradeToExec();
+
+
+std::string _Name;
+	boolean	signed;
+	unsigned int ReGradeToSign;
+	unsigned int ReGradeToExec;
+
+	*/
