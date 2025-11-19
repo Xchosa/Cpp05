@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:07:00 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 16:06:07 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/19 17:39:23 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class Bureaucrat
 	void incrementBy(int nbr);
 	void decrementBy(int nbr);
 	void getStatus();
+	void signForm(Form &object);
 };
 
 class Form
@@ -51,10 +52,10 @@ class Form
 	public:
 	Form();
 	~Form();
-	Form(const std::string &name, unsigned int );
+	Form::Form(const std::string &name, unsigned int nbrToSign, unsigned int nbrToExe );
 	Form& operator=(const Form &object);
 	Form(const Form &object);
-	void beSigned(const Bureaucrat &object);
+	void beSigned(Bureaucrat &object);
 	unsigned int getReGradeToSign();
 	unsigned int getReGradeToExec();
 
@@ -95,6 +96,6 @@ class GradeTooLowException : public std::exception
 };
 
 
-Form::GradeTooHighException : public std::exception
+//Form::GradeTooHighException : public std::exception
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:08:33 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 09:38:51 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/19 17:48:49 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ int main()
 	std::cout << "Creating some Bureaucrat" << std::endl;
 	
 	
-	std::cout << "Test: Grade is to high: " << std::endl;
+	std::cout << "Test: Sign Grade is to low: " << std::endl;
 	try{
-		Bureaucrat second("Thin", 0);
-		std::cout << second;
+		Bureaucrat second("Thin", 100);
+		Form toLow("Doof", 10, 50 );
+		signForm(tolow);
 	}
 	catch (std::exception & e)
 	{
@@ -53,7 +54,7 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
+	
 
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:18:25 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 16:12:04 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/19 17:44:49 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ unsigned int Bureaucrat::getGrade() const noexcept
 	return this->_grade;
 }
 
-//unsigned int Bureaucrat::setGrade()
-//{
-//	t
-//}
 
 void Bureaucrat::incrementBy(int nbr)
 {
@@ -88,6 +84,35 @@ void Bureaucrat::decrementBy(int nbr)
 		this->_grade = test_grade +nbr;
 	}
 }
+
+void Bureaucrat::signForm( Form &object) 
+{
+	if(object.getSignature() == true)
+		std::cout << object.getName() << "already signed" << std::endl;
+	
+
+	// void Form::beSigned( Bureaucrat &object)
+	object.beSigned(*this);
+	if(object.getSignature() == true)
+	{
+		std::cout << this->getName() << "signed" << object.getName(); 
+	}
+	else
+		std::cout << "couldn't sign" << object.getName() << "because" << "grade is to low: "
+		"Bureaucrat grade: "<< this->getGrade() << "required to sign" << object.getReGradeToSign() << std::endl;
+};
+
+
+/*
+Then, modify the signForm() member function in the Bureaucrat class. This function must call Form::beSigned() to attempt to sign the form. If the form is signed
+successfully, it will print something like:
+<bureaucrat> signed <form>
+Otherwise, it will print something like:
+<bureaucrat> couldn’t sign <form> because <reason>.
+
+*/
+
+
 
 
 // lowest 150
@@ -125,15 +150,16 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat )
 Form::Form(const std::string &name, unsigned int nbrToSign, unsigned int nbrToExe ): _Name(_Name) , isSigned(false), ReGradeToSign(), ReGradeToExec()
 {
 	if (nbrToSign > 150)
-		throw GradeTooLowException(Name, nbrToSign);
+		throw GradeTooLowException(_Name, nbrToSign);
 	if (nbrToSign  < 1)
-		throw GradeTooHighException(Name, nbrToSign);
+		throw GradeTooHighException(_Name, nbrToSign);
 	if (nbrToExe > 150)
-		throw GradeTooLowException(Name, nbrToExe);
+		throw GradeTooLowException(_Name, nbrToExe);
 	if (nbrToExe  < 1)
-		throw GradeTooHighException(Name, nbrToExe);
+		throw GradeTooHighException(_Name, nbrToExe);
 	
-	std::cout << "Creating Form: " << std::endl;
+	std::cout << "Creating Form: "<< getName() << "Grade to Sign" << getReGradeToSign()
+	<< "Grade to Execute: " << getReGradeToExec()<<std::endl;
 }
 
 
@@ -159,15 +185,15 @@ Form::Form(const Form &object) : _Name("default") , isSigned(false), ReGradeToSi
 {
 };
 
-void Form::beSigned(const Bureaucrat &object)
+void Form::beSigned( Bureaucrat &object)
 {
 	// 	
 // 					10 						15
 	if (this->getReGradeToSign() > object.getGrade())
 		throw GradeTooLowException(object.getName(), object.getGrade());
 //			5					3
-	if (object.getGrade()  > object.getGrade())
-		throw GradeTooHighException(object.getName(), object.getGrade());
+	//if (object.getGrade()  > object.getGrade())
+	//	throw GradeTooHighException(object.getName(), object.getGrade());
 	
 	this->isSigned = true;
 	std::cout << "Form signed by Bureaucrat: " << object.getName() << std::endl;
