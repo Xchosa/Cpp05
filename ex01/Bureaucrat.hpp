@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:07:00 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 17:39:23 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/20 09:44:54 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <string>
 #include <iostream>
 #include <exception>
+
+
+class Form;
 
 class Bureaucrat
 {
@@ -41,38 +44,12 @@ class Bureaucrat
 	void signForm(Form &object);
 };
 
-class Form
-{
-	private:
-	std::string _Name;
-	bool isSigned;
-	unsigned int ReGradeToSign;
-	unsigned int ReGradeToExec;
-
-	public:
-	Form();
-	~Form();
-	Form::Form(const std::string &name, unsigned int nbrToSign, unsigned int nbrToExe );
-	Form& operator=(const Form &object);
-	Form(const Form &object);
-	void beSigned(Bureaucrat &object);
-	unsigned int getReGradeToSign();
-	unsigned int getReGradeToExec();
-
-	std::string getName();
-	bool getSignature();
-	unsigned int getReGradeToSign();
-	unsigned int getReGradeToExec();
-	void getStatus();
-};
-
-
 
 
 
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat& Bureaucrat );
-
+std::ostream &operator<<(std::ostream &out, const Form& object );
 
 
 class GradeTooHighException : public std::exception
@@ -82,6 +59,7 @@ class GradeTooHighException : public std::exception
 	
 	public:
 	GradeTooHighException(const std::string& Name, unsigned int Grade) ;
+	
 	virtual const char* what() const throw();
 };
 
@@ -92,6 +70,7 @@ class GradeTooLowException : public std::exception
 	
 	public:
 	GradeTooLowException(const std::string& name, unsigned int grade);
+	GradeTooLowException(const std::string& Name, unsigned int gradeBu, unsigned int gradeForm);
 	virtual const char* what() const throw();
 };
 

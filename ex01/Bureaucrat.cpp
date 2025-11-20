@@ -6,11 +6,12 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:18:25 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 17:44:49 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/20 10:06:19 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 
 Bureaucrat::Bureaucrat(const std::string &complicatedName,unsigned int nbr) : _name(complicatedName), _grade(nbr)
@@ -20,7 +21,7 @@ Bureaucrat::Bureaucrat(const std::string &complicatedName,unsigned int nbr) : _n
 	if (nbr < 1)
 		throw GradeTooHighException(complicatedName, nbr);
 	
-	std::cout << "Creating Bureaucrat: " << std::endl;
+	std::cout << "Creating Bureaucrat: " << getName() << ", grade: " << getGrade() <<std::endl;
 }
 Bureaucrat::Bureaucrat()
 {};
@@ -37,7 +38,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &object)
 {
 	if(this != &object)
 	{
-		//this->_name = object._name;
 		this->_grade = object._grade;
 	}
 	return (*this);
@@ -88,14 +88,16 @@ void Bureaucrat::decrementBy(int nbr)
 void Bureaucrat::signForm( Form &object) 
 {
 	if(object.getSignature() == true)
+	{
 		std::cout << object.getName() << "already signed" << std::endl;
-	
+		return;
+	}
 
 	// void Form::beSigned( Bureaucrat &object)
 	object.beSigned(*this);
 	if(object.getSignature() == true)
 	{
-		std::cout << this->getName() << "signed" << object.getName(); 
+		std::cout << this->getName() << " signed " << object.getName() << std::endl;
 	}
 	else
 		std::cout << "couldn't sign" << object.getName() << "because" << "grade is to low: "
@@ -126,7 +128,11 @@ GradeTooLowException::GradeTooLowException(const std::string& Name, unsigned int
 	ErrorMessage =  Name + ": Grade is too low: " +  std::to_string(Grade) \
 	 +  ".The allowed Range is 1 - 150. Must be smaler den 151";
 }
-
+GradeTooLowException::GradeTooLowException(const std::string& Name, unsigned int gradeBu, unsigned int gradeForm)
+{
+	ErrorMessage =  Name + ": Grade if is too low (" +  std::to_string(gradeBu) \
+	 +  ") to sign Form. Form requires: " + std::to_string(gradeForm);
+}
 // higest 1 
 const char* GradeTooHighException::what() const throw()
 {
@@ -147,81 +153,3 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat )
 };
 
 
-Form::Form(const std::string &name, unsigned int nbrToSign, unsigned int nbrToExe ): _Name(_Name) , isSigned(false), ReGradeToSign(), ReGradeToExec()
-{
-	if (nbrToSign > 150)
-		throw GradeTooLowException(_Name, nbrToSign);
-	if (nbrToSign  < 1)
-		throw GradeTooHighException(_Name, nbrToSign);
-	if (nbrToExe > 150)
-		throw GradeTooLowException(_Name, nbrToExe);
-	if (nbrToExe  < 1)
-		throw GradeTooHighException(_Name, nbrToExe);
-	
-	std::cout << "Creating Form: "<< getName() << "Grade to Sign" << getReGradeToSign()
-	<< "Grade to Execute: " << getReGradeToExec()<<std::endl;
-}
-
-
-Form::Form(): _Name("default") , isSigned(false), ReGradeToSign(), ReGradeToExec()
-{
-	std::cout << "Form created:" << std::endl;
-}
-
-Form::~Form()
-{};
-Form& Form::operator=(const Form &object)
-{
-	if(this != &object)
-	{
-		this->_Name = _Name;
-		this->isSigned = isSigned;
-		this->ReGradeToExec = ReGradeToExec;
-		this->ReGradeToSign = ReGradeToSign;
-	}
-	return(*this);
-}
-Form::Form(const Form &object) : _Name("default") , isSigned(false), ReGradeToSign(), ReGradeToExec()
-{
-};
-
-void Form::beSigned( Bureaucrat &object)
-{
-	// 	
-// 					10 						15
-	if (this->getReGradeToSign() > object.getGrade())
-		throw GradeTooLowException(object.getName(), object.getGrade());
-//			5					3
-	//if (object.getGrade()  > object.getGrade())
-	//	throw GradeTooHighException(object.getName(), object.getGrade());
-	
-	this->isSigned = true;
-	std::cout << "Form signed by Bureaucrat: " << object.getName() << std::endl;
-}
-/*
-
-	*/
-
-std::string Form::getName()
-{
-	return(this->_Name);
-}
-
-bool Form::getSignature()
-{
-	return (this->isSigned);
-}
-unsigned int Form::getReGradeToSign()
-{
-	return (this->ReGradeToSign);
-}
-unsigned int Form::getReGradeToExec()
-{
-	return(this->ReGradeToExec);
-}
-void Form::getStatus()
-{
-	std::cout << "Status of Bureaucrat: " << std::endl;
-	std::cout << getName() << " is signed: " << getSignature() << "Grade needed to sign: "
-	<< getReGradeToSign << "Grade needed to Execute " << getReGradeToExec() << std::endl;
-}

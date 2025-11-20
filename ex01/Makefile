@@ -10,7 +10,8 @@ TARGET = main
 
 # Source files
 SRCS =	main.cpp \
-		Bureaucrat.cpp 
+		Bureaucrat.cpp \
+		Form.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
