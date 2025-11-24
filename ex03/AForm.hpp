@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 09:24:00 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/21 15:10:14 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:29:07 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class Bureaucrat;
 class AForm
 {
 	private:
-	std::string _Name;
+	const std::string _Name;
 	bool isSigned;
-	unsigned int ReGradeToSign;
-	unsigned int ReGradeToExec;
+	const unsigned int ReGradeToSign;
+	const unsigned int ReGradeToExec;
 
 	public:
 	AForm();

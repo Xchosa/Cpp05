@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 09:24:00 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/20 10:02:49 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:25:02 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class Bureaucrat;
 class Form
 {
 	private:
-	std::string _Name;
+	const std::string _Name;
 	bool isSigned;
-	unsigned int ReGradeToSign;
-	unsigned int ReGradeToExec;
+	const unsigned int ReGradeToSign;
+	const unsigned int ReGradeToExec;
 
 	public:
 	Form();
@@ -34,8 +34,7 @@ class Form
 	Form& operator=(const Form &object);
 	Form(const Form &object);
 	void beSigned(Bureaucrat &object);
-	//unsigned int getReGradeToSign();
-	//unsigned int getReGradeToExec();
+
 
 	std::string getName() const noexcept;
 	bool getSignature() const noexcept;

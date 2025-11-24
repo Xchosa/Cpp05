@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 11:47:36 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/22 12:48:20 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:52:45 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if(getSignature()== false)
 	{
-		std::cout << "RobotomyRequestForm is not signed yet" << std::endl; 
-		return;
+		throw FormNotSignedException(getName());
 	}
 
 	if (executor.getGrade() > getReGradeToExec()) 

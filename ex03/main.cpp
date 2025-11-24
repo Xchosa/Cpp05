@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:08:33 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/22 12:47:08 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:00:18 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,27 @@ int main()
 	 std::cout << "=== TESTING FORM SIGNING AND EXECUTION ===" << std::endl;
 
     // ========== SHRUBBERY CREATION FORM ==========
+    std::cout << "\n--- SHRUBBERY CREATION FORM (sign: 145, exec: 137) ---\n";
+	
+
+	std::cout << "\n// 1. Grade to low to sign\n";
+	try
+	{
+		Bureaucrat B3("Charlie", 146);  // Exact grade to execute
+        ShrubberyCreationForm SCF3("forest");
+        B3.signForm(SCF3);
+        //std::cout << SCF3 << std::endl;
+        B3.executeForm(SCF3);  // Should create file
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+
+
+
+    
     std::cout << "\n--- SHRUBBERY CREATION FORM (sign: 145, exec: 137) ---\n";
 	
 

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:18:25 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 09:41:22 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:14:23 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &object)
 {
 	if(this != &object)
 	{
-		//this->_name = object._name;
 		this->_grade = object._grade;
 	}
 	return (*this);
@@ -54,14 +53,11 @@ unsigned int Bureaucrat::getGrade() const noexcept
 	return this->_grade;
 }
 
-//unsigned int Bureaucrat::setGrade()
-//{
-//	t
-//}
 
-void Bureaucrat::incrementBy(int nbr)
+void Bureaucrat::decrementBy(int nbr)
 {
 	int test_grade = this->getGrade();
+	std::cout << "Try to decrement " << getName() << " by "<< nbr << std::endl;
 	if((test_grade + nbr ) > 150)
 		throw GradeTooLowException(this->getName(), test_grade);
 	else
@@ -77,15 +73,15 @@ void Bureaucrat::getStatus()
 	std::cout << getName() << "grade: " << getGrade() << std::endl;
 }
 
-void Bureaucrat::decrementBy(int nbr)
+void Bureaucrat::incrementBy(int nbr)
 {
 	int test_grade = this->getGrade();
-	std::cout << "Try to decrement " << getName() << " by "<< nbr << std::endl;
-	if((test_grade + nbr ) < 1)
+	std::cout << "Try to increment " << getName() << " by "<< nbr << std::endl;
+	if((test_grade - nbr ) < 1)
 		throw GradeTooHighException(this->getName(), test_grade);
 	else
 	{
-		this->_grade = test_grade +nbr;
+		this->_grade = test_grade  - nbr;
 	}
 }
 

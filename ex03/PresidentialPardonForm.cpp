@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 11:48:01 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/21 16:28:51 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:52:28 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if(getSignature()== false)
 	{
-		std::cout << "PresidentialPardonForm is not signed yet" << std::endl; 
-		return;
+		throw FormNotSignedException(getName());
 	}
 
 	if (executor.getGrade() > getReGradeToExec()) 

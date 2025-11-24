@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 16:31:22 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/22 12:42:57 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:35:48 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ AForm* Intern::makeForm(const std::string &FormName, const std::string &Targetof
 {
 	std::string TypeForm[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 
-	int type;
+	int type = 0;
 	for (int i = 0; i <3 ; i++)
 	{
 		if (TypeForm[i] == FormName)

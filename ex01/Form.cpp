@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 09:24:03 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/20 10:07:08 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:26:10 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,11 @@ Form& Form::operator=(const Form &object)
 {
 	if(this != &object)
 	{
-		this->_Name = _Name;
-		this->isSigned = isSigned;
-		this->ReGradeToExec = ReGradeToExec;
-		this->ReGradeToSign = ReGradeToSign;
+		this->isSigned = object.isSigned;
 	}
 	return(*this);
 }
+
 Form::Form(const Form &object) : _Name(object._Name) , isSigned(object.isSigned), ReGradeToSign(object.ReGradeToSign), ReGradeToExec(object.ReGradeToExec)
 {
 };

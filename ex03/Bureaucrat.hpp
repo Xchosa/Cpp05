@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:07:00 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/22 12:44:28 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:49:46 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,17 @@ class FromNotExisting : public std::exception
 	virtual const char* what() const throw();
 };
 //Form::GradeTooHighException : public std::exception
+
+
+
+class FormNotSignedException: public std::exception
+{
+	private:
+	std::string ErrorMessage;
+
+	public:
+	FormNotSignedException(const std::string &name);
+	virtual const char* what() const throw();
+};
 
 #endif

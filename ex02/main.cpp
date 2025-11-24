@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:08:33 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/21 16:29:55 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:31:00 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int main()
 	// ========== PRESIDENTIAL PARDON FORM ==========
     std::cout << "\n--- PRESIDENTIAL PARDON FORM (sign: 25, exec: 5) ---\n";
 
-	
+	std::cout << "\n// 7 . Bureaucrat grade too low to sign" << std::endl;
     try
     {
         Bureaucrat B7("Grace", 50);  // Grade too low to sign
@@ -128,7 +128,7 @@ int main()
         std::cerr  << e.what() << std::endl;
     }
 
-	std::cout << "\n// 7. Bureaucrat with exact grade to sign but too low to execute\n";
+	std::cout << "\n// 8. Bureaucrat with exact grade to sign but too low to execute\n";
     try
     {
         Bureaucrat B8("Henry", 25);  // Exact grade to sign
@@ -144,7 +144,7 @@ int main()
         std::cerr << e.what() << std::endl;
     }
 
-	std::cout << "\n// 8. Bureaucrat with exact grade to execute\n";
+	std::cout << "\n// 9. Bureaucrat with exact grade to execute\n";
     try
     {
         Bureaucrat B9("Iris", 5);  // Exact grade to execute

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:12:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/21 16:29:21 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:52:52 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if(getSignature()== false)
 	{
-		std::cout << "ShrubberyCreationForm is not signed yet" << std::endl; 
-		return;
+		throw FormNotSignedException(getName());
 	}
 
 	if (executor.getGrade() > getReGradeToExec()) 

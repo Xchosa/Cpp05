@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:08:33 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/19 09:38:51 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:10:52 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int main()
 	}
 
 	try{
-		Bureaucrat first("Dick", 5);
+		Bureaucrat first("Elisa", 5);
 		std::cout << first;
-		first.incrementBy(10);
+		first.incrementBy(2);
 		first.getStatus();
-		first.decrementBy(-13);
+		first.decrementBy(3);
 		first.getStatus();
-		first.decrementBy(-2);
+		first.decrementBy(150);
 	}
 	catch (std::exception & e)
 	{
