@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 09:24:03 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/24 14:26:10 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:09:24 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ void Form::getStatus() const noexcept
 
 std::ostream &operator<<(std::ostream &out, const Form& Form )
 {
-	out << Form.getName() << " is" << (Form.getSignature() ? "signed" : "unsigned") << "." << std::endl;
+	out << "The Form: \" "<< Form.getName() << " \" is " << (Form.getSignature() ? "signed" : "unsigned") << "." << std::endl;
 	return out;
 }
